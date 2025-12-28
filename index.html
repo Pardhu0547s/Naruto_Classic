@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naruto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="1.2.png" alt="Naruto" class="logo">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Characters</a></li>
+                <li class="hamburger" onclick="toggleMenu(this)">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <img src="0.png" data-speedx="0.3" data-speedy="0.34" alt="Naruto" class="parallax bg">
+        <img src="1.png" data-speedx="0.28" data-speedy="0.3" alt="Naruto" class="parallax h">
+        <img src="1.2.png" data-speedx="0.25" data-speedy="0.27" alt="Naruto" class="parallax v">
+        <img src="2.png" data-speedx="0.22" data-speedy="0.25" alt="Naruto" class="parallax t">
+        <img src="3.png" data-speedx="0.2" data-speedy="0.22" alt="Naruto" class="parallax n">
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>
