@@ -1,47 +1,41 @@
-function toggleMenu(el) {
-    el.classList.toggle("active");
-}
-
 const parallaxEls = document.querySelectorAll(".parallax");
 
-// Target mouse position
-let mouseX = 0;
-let mouseY = 0;
-
-// Current animated position
-let currentX = 0;
-let currentY = 0;
-
-// Smoothness factor (lower = smoother)
+let targetX = 0, targetY = 0;
+let currentX = 0, currentY = 0;
 const ease = 0.08;
 
+/* ================= DESKTOP (MOUSE) ================= */
 window.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX - window.innerWidth / 2;
-    mouseY = e.clientY - window.innerHeight / 2;
+  targetX = e.clientX - window.innerWidth / 2;
+  targetY = e.clientY - window.innerHeight / 2;
 });
 
+/* ================= MOBILE (GYROSCOPE) ================= */
+if (window.DeviceOrientationEvent) {
+  window.addEventListener("deviceorientation", (e) => {
+    // gamma: left-right, beta: front-back
+    targetX = e.gamma * 10; 
+    targetY = e.beta * 10;
+  });
+}
+
+/* ================= ANIMATION LOOP ================= */
 function animateParallax() {
-    // Smooth interpolation (LERP)
-    currentX += (mouseX - currentX) * ease;
-    currentY += (mouseY - currentY) * ease;
+  currentX += (targetX - currentX) * ease;
+  currentY += (targetY - currentY) * ease;
 
-    parallaxEls.forEach((el) => {
-        const speedX = el.dataset.speedx;
-        const speedY = el.dataset.speedy;
+  parallaxEls.forEach(el => {
+    const speedX = el.dataset.speedx || 0;
+    const speedY = el.dataset.speedy || 0;
 
-        const x = -currentX * speedX;
-        const y = currentY * speedY;
+    el.style.setProperty("--x", `${-currentX * speedX}px`);
+    el.style.setProperty("--y", `${currentY * speedY}px`);
 
-        el.style.transform = `
-            translate3d(
-                calc(-50% + ${x}px),
-                calc(-50% + ${y}px),
-                0
-            )
-        `;
-    });
+    const scale = 1 + speedX * 0.03;
+    el.style.setProperty("--scale", scale);
+  });
 
-    requestAnimationFrame(animateParallax);
+  requestAnimationFrame(animateParallax);
 }
 
 animateParallax();
