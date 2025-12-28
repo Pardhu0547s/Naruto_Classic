@@ -92,6 +92,7 @@ main {
   position: relative;
   width: 100%;
   height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
   background-color: #180d0d;
 }
@@ -276,5 +277,46 @@ main {
 @media (min-width: 1024px) {
   #gyroBtn {
     display: none;
+  }
+}
+
+/* ================= MOBILE PORTRAIT FIX ================= */
+@media (max-width: 768px) and (orientation: portrait) {
+
+  /* Background sky */
+  .bg {
+    width: auto;
+    height: 160%;
+    top: 50%;
+    left: 50%;
+  }
+
+  /* Hokage mountain */
+  .h {
+    width: auto;
+    height: 120%;
+    top: 45%;
+    left: 50%;
+  }
+
+  /* Village mid layer */
+  .t {
+    width: auto;
+    height: 140%;
+    top: 55%;
+  }
+
+  /* Naruto character */
+  .n {
+    height: 65%;
+    top: 72%;
+    left: 50%;
+  }
+
+  /* Logo layer */
+  .v {
+    width: 45%;
+    top: 28%;
+    left: 20%;
   }
 }
