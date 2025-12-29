@@ -6,7 +6,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   overscroll-behavior: none;
   overflow-x: hidden;
 }
@@ -26,7 +27,7 @@ header {
   padding: 0.9rem;
   top: 0;
   left: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0);
   touch-action: manipulation;
 }
 
@@ -115,9 +116,7 @@ main {
   object-fit: cover;
   z-index: 0;
   transform:
-    translate(-50%, -50%)
-    translate3d(var(--x, 0px), var(--y, 0px), 0)
-    scale(var(--scale, 1));
+    translate(-50%, -50%) translate3d(var(--x, 0px), var(--y, 0px), 0) scale(var(--scale, 1));
 }
 
 .h {
@@ -129,9 +128,7 @@ main {
   object-fit: cover;
   z-index: 1;
   transform:
-    translate(-50%, -50%)
-    translate3d(var(--x, 0px), var(--y, 0px), 0)
-    scale(var(--scale, 1));
+    translate(-50%, -50%) translate3d(var(--x, 0px), var(--y, 0px), 0) scale(var(--scale, 1));
 }
 
 .v {
@@ -143,9 +140,7 @@ main {
   object-fit: cover;
   z-index: 2;
   transform:
-    translate(-50%, -50%)
-    translate3d(var(--x, 0px), var(--y, 0px), 0)
-    scale(var(--scale, 1));
+    translate(-50%, -50%) translate3d(var(--x, 0px), var(--y, 0px), 0) scale(var(--scale, 1));
 }
 
 .t {
@@ -157,9 +152,7 @@ main {
   object-fit: cover;
   z-index: 3;
   transform:
-    translate(-50%, -50%)
-    translate3d(var(--x, 0px), var(--y, 0px), 0)
-    scale(var(--scale, 1));
+    translate(-50%, -50%) translate3d(var(--x, 0px), var(--y, 0px), 0) scale(var(--scale, 1));
 }
 
 .n {
@@ -171,152 +164,65 @@ main {
   object-fit: cover;
   z-index: 4;
   transform:
-    translate(-50%, -50%)
-    translate3d(var(--x, 0px), var(--y, 0px), 0)
-    scale(var(--scale, 1));
+    translate(-50%, -50%) translate3d(var(--x, 0px), var(--y, 0px), 0) scale(var(--scale, 1));
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 725px) {
 
-  header nav {
-    padding: 0 1rem;
+    header nav {
+    max-width: 600px;
+    padding: 0;
   }
 
   header ul a {
-    display: none;
+    display: flex;
+    font-size: 0.73rem;
+    padding: 0 0.3rem;
+  }
+  
+  .hamburger {
+    padding-left: 0.9rem;
+  }
+
+  .hamburger a {
+    height: 30px;
+    width: 30px;
   }
 
   .h {
-    width: 120%;
-    height: auto;
-    left: 50%;
+    width: 100%;
+    height: 100%;
+    
   }
 
   .v {
-    width: 45%;
-    left: 20%;
+    width: 20%;
+    left: 40%;
   }
 
   .n {
-    height: 55%;
+    height: 40%;
     left: 50%;
     top: 70%;
   }
 
   .t {
-    width: 130%;
-  }
-
-  .bg {
-    width: 140%;
-    height: 140%;
+    width: 10px;
+    height: 10px;
     top: 50%;
     left: 50%;
   }
 
-  .parallax {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform:
-        translate(-50%, -50%)
-        translate3d(var(--x, 0px), var(--y, 0px), 0)
-        scale(var(--scale, 1));
-    }
-    50% {
-      transform:
-        translate(-50%, -50%)
-        translate3d(var(--x, 0px), var(--y, 0px), 0)
-        scale(1.03);
-    }
-  }
-}
-
-
-@media (min-width: 769px) and (max-width: 1024px) {
-
-  .h {
-    width: 100%;
-  }
-
-  .n {
-    height: 60%;
-    left: 40%;
-  }
-
-  .v {
-    width: 35%;
-  }
-}
-
-#gyroBtn {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 12px 22px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  z-index: 10000;
-
-  background: rgba(34, 90, 220, 0.9);
-  color: #fff;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-/* Hide button on desktop */
-@media (min-width: 1024px) {
-  #gyroBtn {
-    display: none;
-  }
-}
-
-/* ================= MOBILE PORTRAIT FIX ================= */
-@media (max-width: 768px) and (orientation: portrait) {
-
-  /* Background sky */
   .bg {
-    width: auto;
-    height: 160%;
-    top: 50%;
-    left: 50%;
-  }
-
-  /* Hokage mountain */
-  .h {
-    width: auto;
-    height: 120%;
-    top: 45%;
-    left: 50%;
-  }
-
-  /* Village mid layer */
-  .t {
-    width: auto;
-    height: 140%;
-    top: 55%;
-  }
-
-  /* Naruto character */
-  .n {
-    height: 65%;
-    top: 72%;
-    left: 50%;
-  }
-
-  /* Logo layer */
-  .v {
-    width: 45%;
-    top: 28%;
+    width: 800px;
+    height: 800px;
+    top: 20%;
     left: 20%;
   }
-}
+
+
+
+
+
+
